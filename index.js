@@ -122,7 +122,8 @@ CacheBuster.prototype.references = function references() {
             
             original = original.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 
-            contents = contents.replace(new RegExp('\\b' + original + '(?!\\.)\\b', 'g'), cachebusted);
+            contents = contents.replace(new RegExp('[^a-zA-Z0-9_-]' + original + '(?!\\.)\\b', 'g'), cachebusted);
+            
         }
 
         file.contents = new Buffer(contents, encoding);
